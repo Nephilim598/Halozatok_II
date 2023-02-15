@@ -1,0 +1,78 @@
+Statikus routing
+Hálózatok megismerése
+
+Egy router hogyan ismer meg egy hálózatot?
+
+    kézzel megadva
+    dinamikusan – egy irányító protokollon keresztül
+
+Előnyök
+
+    router nem hirdeti a hálózaton
+    kevesebb sávszélességet foglalnak
+    továbbítási útvonal előre ismert
+
+Hátrányok
+
+    időigényes a rendszergazda számára
+    hibaérzékeny (nagy hálózaton különösen)
+    nagy hálózat esetén nem egyszerű a karbantartás
+
+Véghálózat
+
+A véghálózatról beszélünk, ha a szomszéd hálózatok felé csak egyetlen út vezet. Az egyetlen irányba vezető forgalomirányító a csonk forgalomirányító, angolul stub router. 
+
+
+Alapértelmezett útvonal
+ip route 0.0.0.0 0.0.0.0 {IP-cím | kimenő-interfész}
+
+
+IPv6 statikus útvonal
+R1(config)# ipv6 route ipv6-előtag/előtaghossz { ipv6-cím | kimenő-interfész }
+
+
+Lebegő útvonalak
+A lebegő útvonal egy tartalék útvonal. Ha az elsődleges útvonal meghibásodik, akkor ez kerül kiválasztásra.
+A lebegő útvonalnak az adminisztratív távolsága nagyobb. 
+
+R1(config)#ip route 192.168.20.0 255.255.255.0 S0/0/0 150
+
+
+
+Összevont útvonalak
+
+Ha a célhálózatok címe folytonos, egyetlen címmel tudunk rá hivatkozni,
+ és mind a négy hálózat ugyanazon az interfészen érhető el, 
+akkor egyetlen bejegyzéssel hivatkozhatunk rájuk.
+
+
+Összevont útvonal meghatározása:
+
+    felírjuk a hálózati címeket binárisan
+    meghatározzuk balról mennyi bit egyezik
+    az egyező bitek után részt 0-val egészítjük ki 32 bit hosszúra
+
+IPv6 statikus útvonal
+
+R1(config)# ipv6 route ipv6-előtag/előtaghossz { ipv6-cím | kimenő-interfész }
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+

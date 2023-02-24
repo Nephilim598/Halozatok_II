@@ -1,0 +1,35 @@
+megnyitom a Hacker Servert.
+Dhcp-re állítom hogy megtudjam van-e és hogy mi a hálózat ip
+van dhcp / 192.168.1.128 255.255.255.128
+pingeléssel felderítem a hálózatot
+van 142,141,140,130,129
+Létrehozok egy saját Dhcp kiszolgálót aminek én leszek az alapértelmezett átjárója 
+és beállíthatnám hogy továbbküldje a csomagokat az internet felé (a szerver alap gateje az internet felé)
+majd áram kimaradást okozok
+és ekkor ÁTVETTÜK AZ URALMAT A FORGALOM FELETT!!.... rajtam keresztül áramlik a forgalom
+
+
+
+Szerver saját adatai:
+ip - 192.168.20.1
+mask - 255.255.255.0
+gate - 20.0.0.2
+
+
+Szerver DHCP:
+gate - 192.168.20.1
+dns - 192.168.20.1
+start - 192.168.20.10
+mask - /24
+
+
+
+
+
+
+
+
+
+
+
+

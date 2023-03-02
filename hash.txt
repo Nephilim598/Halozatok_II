@@ -1,0 +1,97 @@
+cisco eszköz feltörése egy READONLY felhasználóval.
+a felhasználóknak 1-15 ig lehet hozzáférési jogokat adni (utánanézni)
+HASH  /   szivárványtábla    (rákeresni)
+védekezés ellene hosszú értelmetlen jelszó megadása
+vagy jelszó/felhasználó szerver 
+
+https://www.cisco.com/E-Learning/bulk/public/tac/cim/cib/using_cisco_ios_software/02_cisco_ios_hierarchy.htm
+Cisco IOS Command Hierarchy
+With CIM Cisco Internetworking Basics, you can gain a practical understanding of the fundamental technologies, principles, and protocols used in routing.  From an introduction to internetworking an...
+
+
+http://ethical.inf.elte.hu/wiki/Jelsz%C3%B3_elleni_t%C3%A1mad%C3%A1sok
+Jelszó elleni támadások - IT Biztonság kurzus
+
+https://hu.wikipedia.org/wiki/Kriptogr%C3%A1fiai_hash_f%C3%BCggv%C3%A9ny
+
+Kriptográfiai hash függvény
+A hash függvények (kiejtése: hes, magyarul hasítófüggvények) olyan informatikában használt eljárások, amelyekkel bármilyen hosszúságú adatot adott hosszúságra képezhetünk le. Az így kapott véges adat neve…
+
+
+
+
+
+
+
+
+
+
+
+feltörés egy READONLY-val:
+sh ru   (running config)
+felhasználók(admin) MD5 titkosított kód kimásolása
+majd online md5 descrypteljük
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

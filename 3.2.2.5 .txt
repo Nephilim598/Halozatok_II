@@ -1,0 +1,166 @@
+vlan 10
+name Faculty/Staff
+exit
+vlan 20
+name Students
+exit
+vlan 30
+name Guest(Default)
+exit
+vlan 99
+name Management&Native
+exit
+
+
+
+
+int f0/11
+switchport mode access
+switchport access vlan 10
+exit
+
+int f0/18
+switchport mode access
+switchport access vlan 20
+exit
+
+int f0/6
+switchport mode access
+switchport access vlan 30
+exit
+
+
+
+
+
+
+regi
+-----------------------------------------------
+
+S1:
+	ena
+	conf t
+	no ip domain-lookup
+	hostname S1
+	banner motd #alapkonfig#
+	logging console
+	service timestamps log datetime msec
+	service timestamps debug datetime msec
+	line vty 0 15
+	password cisco
+	login
+	exit
+	line console 0
+	password cisco
+	login
+	exit
+	enable secret cisco
+	service password-encryption 
+	interface vlan 1
+	ip address 192.168.1.11 255.255.255.0
+	no shutdown
+	exit
+	int range f0/1-24, g0/1-2
+	switchport mode access
+	switchport access vlan 99
+	switchport port-security
+	switchport port-security maximum 2
+	switchport port-security mac-address sticky
+	switchport port-security violation restrict
+	exit
+	int f0/6
+	switchport mode access
+	switchport access vlan 10
+	switchport port-security
+	switchport port-security maximum 2
+	switchport port-security mac-address sticky
+	switchport port-security violation restrict
+	exit
+	int f0/1
+	switchport mode trunk
+	switchport port-security
+	exit
+	do wr
+
+
+
+
+S2:
+
+	ena
+	conf t
+	no ip domain-lookup
+	hostname S1
+	banner motd #alapkonfig#
+	logging console
+	service timestamps log datetime msec
+	service timestamps debug datetime msec
+	line vty 0 15
+	password cisco
+	login
+	exit
+	line console 0
+	password cisco
+	login
+	exit
+	enable secret cisco
+	service password-encryption 
+	interface vlan 1
+	ip address 192.168.1.12 255.255.255.0
+	no shutdown
+	exit
+	int range f0/1-24, g0/1-2
+	switchport mode access
+	switchport access vlan 99
+	switchport port-security
+	switchport port-security maximum 2
+	switchport port-security mac-address sticky
+	switchport port-security violation restrict
+	exit
+	int f0/11
+	switchport mode access
+	switchport access vlan 10
+	switchport port-security
+	switchport port-security maximum 2
+	switchport port-security mac-address sticky
+	switchport port-security violation restrict
+	exit
+	int f0/18
+	switchport mode access
+	switchport access vlan 20
+	switchport port-security
+	switchport port-security maximum 2
+	switchport port-security mac-address sticky
+	switchport port-security violation restrict
+	exit
+	int f0/1
+	switchport mode trunk
+	switchport port-security
+	exit
+	do wr
+
+
+-------------------------------------------------
+
+
+
+
+interface vlan 1
+no ip address 
+interface vlan 99 
+ip address 192.168.1.12 255.255.255.0 
+exit 
+
+
+
+
+interface range f0/11-24 
+switchport mode access 
+switchport access vlan 10 
+
+
+
+
+
+
+

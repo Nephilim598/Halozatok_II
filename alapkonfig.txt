@@ -12,6 +12,7 @@ router alapbeállításai:
 
 
 
+--------------------------------------------------------
 
 ipv6 aktiválás:
 	ena
@@ -26,6 +27,7 @@ ipv6 aktiválás:
 
 
 
+--------------------------------------------------------
 
 routing ipv4:
 	nyomonkövetés - traceroute "ip"
@@ -36,6 +38,9 @@ routing ipv4:
 	alapértelmezett útvonal - ip route 0.0.0.0 0.0.0.0 { IP-cím | kimenő-interfész }
 	Lebegő útvonal - R1(config)#ip route 192.168.20.0 255.255.255.0 S0/0/0 89
 	Lebegő útvonalak adminisztratív távolsága: Statikus-1, EIGRP-90, IGRP-100, OSPF-110, IS-IS-115, RIP-120
+
+
+--------------------------------------------------------
 
 Összevont útvonal meghatározása:
 	felírjuk a hálózati címeket binárisan
@@ -105,6 +110,7 @@ routing ipv6:
 
 
 
+--------------------------------------------------------
 
 Ssh:
 	ip domain-name R1.hu
@@ -118,6 +124,7 @@ Ssh:
 
 
 
+--------------------------------------------------------
 
 
 Telnet beállítása:
@@ -128,6 +135,7 @@ Telnet beállítása:
 
 
 
+--------------------------------------------------------
 
 
 Idő:
@@ -136,6 +144,7 @@ Idő:
 
 
 
+--------------------------------------------------------
 
 DHCP:
 	ip dhcp pool Lan1
@@ -144,6 +153,7 @@ DHCP:
 	dns 8.8.8.8
 
 
+--------------------------------------------------------
 
 Naplózás/bejelentkezes/kiléptetés:
 	Naplózzuk a sikertelen SSH belépési kísérleteket - R1(config)#login on-failure log
@@ -155,10 +165,50 @@ Naplózás/bejelentkezes/kiléptetés:
 	Sikertelen bejelentkezések - R1(config)#login block-for 100 attempts 15 within 180
 	
 
+--------------------------------------------------------
+
+
+RIP:
+	router rip
+	version 2
+	network "hálózatcím"
+	passive-interface "xy"
+
+Network-nél a saját kapcsolatait kell megadni
+
+
+--------------------------------------------------------
 
 
 
+igrp
 
+R1(config)#router igrp "router igrp autonóm_rendszer_száma"
+R1(config-router)#network 172.16.8.0
+R1(config-router)#network 192.168.5.0
+R1(config-router)#end
+
+Az autonóm rendszerbe tartozó útválasztókon azonos számot állítunk be. 
+A példában 8-as. Minden útválasztó, amelyben a 8-as szám van beállítva útválasztó információkat cserél.
+
+
+
+--------------------------------------------------------
+
+EIGRP
+
+
+R1(config)#router eigrp 8
+R1(config-router)#network 172.16.8.0
+R1(config-router)#network 192.168.5.0
+R1(config-router)#end
+
+Az autonóm rendszerbe tartozó útválasztókon azonos számot állítunk be. 
+A példában 8-as. Minden útválasztó, amelyben a 8-as szám van beállítva útválasztó információkat cserél.
+
+
+
+--------------------------------------------------------
 
 OSPF:
 
@@ -299,6 +349,15 @@ Példa:
 
 
 
+
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+
+
+
 SWITCH:
 
 
@@ -311,21 +370,21 @@ Switch alapbeállításai:
 	-konfig mentése
 
 
-
+--------------------------------------------------------
 
 
 Naplózás:
 	Mint a routernél.
 
 
-
+--------------------------------------------------------
 
 
 
 Kábel felismerés:
 	S1(config-if)# mdix auto
 
-
+--------------------------------------------------------
 
 
 
@@ -339,7 +398,7 @@ Portbiztonság beállítása:
 	S1(config-if)#switchport port-security violation protect / vagy restrict 
  	"felesleges portok lekapcsolása"
 
-
+--------------------------------------------------------
 
 Ssh:
 	ip domain-name R1.hu
@@ -351,7 +410,7 @@ Ssh:
 	exit
 	ip ssh version 2
 
-
+--------------------------------------------------------
 
 
 Telnet beállítása:
@@ -361,13 +420,13 @@ Telnet beállítása:
 	S1(config-line)#end
 
 
-
+--------------------------------------------------------
 
 
 Alapértelmezett átjáró beállítása:
 	S1(config)#ip default-gateway "IP"
 
-
+--------------------------------------------------------
 
 
 Példa:
@@ -409,13 +468,3 @@ Példa:
 	switchport port-security mac-address sticky
 	switchport port-security violation restrict 
 	do wr
-
-
-
-
-
-
-
-
-
-
